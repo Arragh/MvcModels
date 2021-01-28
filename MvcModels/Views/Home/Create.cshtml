@@ -1,0 +1,33 @@
+﻿@model Person
+
+@{ 
+    Layout = "_Layout";
+}
+
+<form asp-action="DisplaySummary" method="post">
+    <div class="form-group">
+        <label asp-for="PersonId"></label>
+        <input asp-for="PersonId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PersonRole"></label>
+        <select asp-for="PersonRole" asp-items="@new SelectList(Enum.GetNames(typeof(Person.Role)))" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="HomeAdress.City"></label>
+        <input asp-for="HomeAdress.City" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="HomeAdress.Country"></label>
+        <input asp-for="HomeAdress.Country" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Создать</button>
+</form>

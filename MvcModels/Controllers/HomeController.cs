@@ -22,5 +22,15 @@ namespace MvcModels.Controllers
             }
             return NotFound();
         }
+
+        public ViewResult Create() => View(new Person());
+
+        [HttpPost]
+        public ViewResult Create(Person model) => View(nameof(Index), model);
+
+        public ViewResult DisplaySummary([Bind(nameof(AdressSummary.City), Prefix = nameof(Person.HomeAdress))]AdressSummary model) => View(model);
+
+        //public ViewResult Names(string[] names) => View(names ?? new string[0]);
+        public ViewResult Names(List<string> names) => View(names ?? new List<string>());
     }
 }
