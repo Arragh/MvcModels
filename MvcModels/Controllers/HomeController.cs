@@ -13,7 +13,7 @@ namespace MvcModels.Controllers
         public HomeController(IRepository repository) => this.repository = repository;
 
         //public ViewResult Index(int id) => View(repository[id] ?? repository.People.Last());
-        public IActionResult Index(int? id)
+        public IActionResult Index([FromQuery]int? id)
         {
             Person person;
             if (id.HasValue && (person = repository[id.Value]) != null)
@@ -32,5 +32,7 @@ namespace MvcModels.Controllers
 
         //public ViewResult Names(string[] names) => View(names ?? new string[0]);
         public ViewResult Names(List<string> names) => View(names ?? new List<string>());
+
+        public ViewResult Adress(List<AdressSummary> adresses) => View(adresses ?? new List<AdressSummary>());
     }
 }
